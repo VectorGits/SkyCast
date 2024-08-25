@@ -13,7 +13,7 @@ const WeatherHeader = () => {
 
       {/* Location */}
       <div className="flex items-center space-x-2">
-        <span className="text-lg font-medium">Lagos NG</span>
+        <span className="sm:text-sm md:text-2xl lg:text-3xl font-medium">Lagos NG</span>
         <FontAwesomeIcon 
           icon={faMapMarkerAlt} 
           className="sm:2xl md:text-3xl lg:text-4xl" 
