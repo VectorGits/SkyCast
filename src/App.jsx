@@ -1,9 +1,9 @@
 import React from 'react';
-import WeatherHeader from '../components/WeatherHeader'; // Adjust the path as necessary
+import WeatherHeader from './components/WeatherHeader'; // Adjust the path as necessary
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-screen-lg mx-auto">
       <WeatherHeader />
       {/* Other components can go here */}
     </div>
