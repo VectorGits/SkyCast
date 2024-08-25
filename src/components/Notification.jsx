@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrella } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,6 +10,16 @@ const Notification = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % notifications.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [notifications.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % notifications.length);
@@ -23,17 +33,52 @@ const Notification = () => {
     setCurrentSlide(index);
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      nextSlide();
+    }
+
+    if (touchStartX.current - touchEndX.current < -50) {
+      prevSlide();
+    }
+  };
+
   return (
-    <div className="p-4">
-      <div className="relative flex items-center justify-center bg-white border rounded-lg p-4 shadow-md">
-        <FontAwesomeIcon icon={faUmbrella} className="text-xl mr-2" />
-        <div className="flex-1 text-lg font-semibold">{notifications[currentSlide].message}</div>
+    <div className="p-2 sm:py-2 lg:py-6 m-2 border rounded-lg">
+      <div
+        className="relative w-full overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {notifications.map((notification, index) => (
+            <div
+              key={index}
+              className="min-w-full flex items-center justify-center bg-white shadow-md"
+            >
+              <FontAwesomeIcon icon={faUmbrella} className="text-xl mr-2" />
+              <div className="sm:text-xs md:text-md lg:text-lg font-semibold">{notification.message}</div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="flex justify-center mt-2 space-x-2">
         {notifications.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${index === currentSlide ? 'bg-black' : 'bg-gray-400'}`}
+            className={`sm:w-2 sm:h-2 lg:w-3 lg:h-3 rounded-full ${index === currentSlide ? 'bg-black' : 'bg-gray-400'}`}
             onClick={() => goToSlide(index)}
           />
         ))}
