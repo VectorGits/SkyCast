@@ -30,8 +30,8 @@ const Foreview = () => {
                   <FontAwesomeIcon key={iconIndex} icon={icon} className="mr-2 sm:text-xs" />
                 ))}
               </td>
-              <td className="py-2 text-right sm:text-xs">{forecast.tempHigh}</td>
-              <td className="py-2 text-right sm:text-xs">{forecast.tempLow}</td>
+              <td className="py-2 text-right sm:text-xs                                                                                                                                                                         ">{forecast.tempHigh}</td>
+              <td className="py-2 text-right sm:text-xs                                                                                                                                                                         ">{forecast.tempLow}</td>
             </tr>
           ))}
         </tbody>
