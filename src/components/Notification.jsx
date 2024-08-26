@@ -66,7 +66,7 @@ const Notification = () => {
           {notifications.map((notification, index) => (
             <div
               key={index}
-              className="min-w-full flex items-center justify-center bg-white shadow-md"
+              className="min-w-full flex items-center justify-center bg-white"
             >
               <FontAwesomeIcon icon={faUmbrella} className="text-xl mr-2" />
               <div className="sm:text-xs md:text-md lg:text-lg font-semibold">{notification.message}</div>
