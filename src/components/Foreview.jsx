@@ -20,18 +20,18 @@ const Foreview = () => {
         <tbody>
           {forecasts.map((forecast, index) => (
             <tr key={index} className="border-b last:border-b-0">
-              <td className="py- sm:text-xs">{forecast.day}</td>
+              <td className="py- sm:text-xs md:text-lg lg:text-2xl">{forecast.day}</td>
               <td className="py-2">
-                <FontAwesomeIcon icon={faTint} className="mr-1 sm:text-xs" />
-                <span className='sm:text-xs'>{forecast.precipitation}</span>
+                <FontAwesomeIcon icon={faTint} className="mr-1 sm:text-xs lg:text-2xl" />
+                <span className='sm:text-xs md:text-lg lg:text-2xl'>{forecast.precipitation}</span>
               </td>
               <td className="py-2">
                 {forecast.icons.map((icon, iconIndex) => (
-                  <FontAwesomeIcon key={iconIndex} icon={icon} className="mr-2 sm:text-xs" />
+                  <FontAwesomeIcon key={iconIndex} icon={icon} className="mr-2 sm:text-xs md:text-lg lg:text-2xl" />
                 ))}
               </td>
-              <td className="py-2 text-right sm:text-xs                                                                                                                                                                         ">{forecast.tempHigh}</td>
-              <td className="py-2 text-right sm:text-xs                                                                                                                                                                         ">{forecast.tempLow}</td>
+              <td className="py-2 text-right md:text-lg sm:text-xs                                                                                                                                                                         ">{forecast.tempHigh}</td>
+              <td className="py-2 text-right md:text-lg sm:text-xs                                                                                                                                                                         ">{forecast.tempLow}</td>
             </tr>
           ))}
         </tbody>
