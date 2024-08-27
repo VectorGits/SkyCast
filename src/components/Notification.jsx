@@ -52,7 +52,7 @@ const Notification = () => {
   };
 
   return (
-    <div className="p-2 sm:py-2 lg:py-6 m-2 border rounded-lg">
+    <div className="p-2 sm:py-2 lg:py-6 m-4 border rounded-lg">
       <div
         className="relative w-full overflow-hidden"
         onTouchStart={handleTouchStart}
