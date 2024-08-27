@@ -17,13 +17,13 @@ const Widget = () => {
       {widgets.map((widget, index) => (
         <div
           key={index}
-          className="flex items-center bg-white border rounded-lg p-4 shadow-md"
+          className="items-center bg-white border rounded-lg p-4 shadow-md"
         >
-          <FontAwesomeIcon icon={widget.icon} className="text-xl mr-4" />
-          <div>
-            <div className="text-sm font-semibold">{widget.label}</div>
-            <div className="text-lg font-bold">{widget.value}</div>
+          <div className='flex items-center'>
+          	<FontAwesomeIcon icon={widget.icon} className="sm:text-xs md:text-base lg:text-xl mr-2" />
+            <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600">{widget.label}</div>
           </div>
+            <div className="sm:text-base md:text-xl lg:text-3xl font-bold">{widget.value}</div>
         </div>
       ))}
     </div>
