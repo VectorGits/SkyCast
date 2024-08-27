@@ -3,6 +3,7 @@ import WeatherHeader from './components/WeatherHeader'; // Adjust the path as ne
 import Forecast from './components/Forecast';
 import Notification from './components/Notification';
 import Foreview from './components/Foreview';
+import Widget from './components/Widget';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Forecast />
       <Notification />
       <Foreview />
+      <Widget />
       {/* Other components can go here */}
     </div>
   );
