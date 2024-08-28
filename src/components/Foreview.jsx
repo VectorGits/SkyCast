@@ -23,7 +23,7 @@ const Foreview = () => {
               <td className="py- sm:text-xs md:text-lg lg:text-2xl">{forecast.day}</td>
               <td className="py-2">
                 <FontAwesomeIcon icon={faTint} className="mr-1 sm:text-xs lg:text-2xl" />
-                <span className='sm:text-xs md:text-lg lg:text-2xl'>{forecast.precipitation}</span>
+                <span className='sm:text-xs md:text-lg lg:text-2xl ml-2'>{forecast.precipitation}</span>
               </td>
               <td className="py-2">
                 {forecast.icons.map((icon, iconIndex) => (
