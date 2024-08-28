@@ -1,20 +1,20 @@
+// src/App.jsx
 import React from 'react';
-import WeatherHeader from './components/WeatherHeader'; // Adjust the path as necessary
-import Forecast from './components/Forecast';
-import Notification from './components/Notification';
-import Foreview from './components/Foreview';
-import Widget from './components/Widget';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ForecastPage from './pages/ForecastPage';
 
 function App() {
   return (
-    <div className="App max-w-screen-lg mx-auto">
-      <WeatherHeader />
-      <Forecast />
-      <Notification />
-      <Foreview />
-      <Widget />
-      {/* Other components can go here */}
-    </div>
+    <Router>
+      <div className="App max-w-screen-lg mx-auto">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/forecast" element={<ForecastPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
