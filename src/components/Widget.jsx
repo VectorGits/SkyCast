@@ -19,7 +19,7 @@ const Widget = () => {
           key={index}
           className="items-center bg-white border rounded-lg p-4 shadow-md"
         >
-          <div className='flex items-center'>
+          <div className='flex items-center mb-1'>
           	<FontAwesomeIcon icon={widget.icon} className="sm:text-xs md:text-base lg:text-xl mr-2" />
             <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600">{widget.label}</div>
           </div>
