@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import ForecastMini from "../components/ForecastMini";
+import ForecastMaxi from "../components/ForecastMaxi";
 
 const ForecastPage = () => {
     return (
         <div>
-            <div className="flex items-center mb-4 p-4">
+            <div className="flex items-center mb-2 p-4">
                 <Link to="/home" className="flex items-center justify-center text-center font-bold px-2 py-1 mr-2 border underline rounded-lg sm:text-base md:text-xl lg:text-2xl">
 				<lord-icon
 					src="https://cdn.lordicon.com/whtfgdfm.json"
@@ -20,8 +20,8 @@ const ForecastPage = () => {
                 </Link>
             </div>
 
-			
-            <ForecastMini />
+
+            <ForecastMaxi />
         </div>
     );
 };
