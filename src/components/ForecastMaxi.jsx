@@ -3,14 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudShowersHeavy, faBolt, faCloudMoon } from '@fortawesome/free-solid-svg-icons';
 
 const ForecastMaxi = () => {
-  const forecasts = [
-    { time: "5:00 PM", icon: faCloudShowersHeavy, temp: "27°C" },
-    { time: "6:00 PM", icon: faCloudShowersHeavy, temp: "25°C" },
-    { time: "7:00 PM", icon: faCloudShowersHeavy, temp: "26°C" },
-    { time: "8:00 PM", icon: faBolt, temp: "24°C" },
-    { time: "9:00 PM", icon: faCloudMoon, temp: "32°C" },
-    { time: "10:00 PM", icon: faCloudMoon, temp: "30°C" },
-  ];
+  const generateForecasts = () => {
+    const forecasts = [];
+    const now = new Date();
+    for (let i = 1; i <= 24; i++) {
+      const forecastTime = new Date(now);
+      forecastTime.setHours(now.getHours() + i);
+      const timeString = forecastTime.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+      const temp = `${Math.floor(Math.random() * 10) + 20}°C`; // Random temperature between 20°C and 29°C
+      const icon = i % 3 === 0 ? faBolt : (i % 2 === 0 ? faCloudShowersHeavy : faCloudMoon); // Alternate icons
+      forecasts.push({ time: timeString, icon, temp });
+    }
+    return forecasts;
+  };
+
+  const forecasts = generateForecasts();
 
   const getNextSevenDays = () => {
     const days = [];
@@ -27,7 +34,6 @@ const ForecastMaxi = () => {
 
   return (
     <div>
-
       {/* Scrollable Forecast Section */}
       <div className="space-y-6 p-4">
         {days.map((day, dayIndex) => (
