@@ -5,14 +5,21 @@ import { faCloudShowersHeavy, faBolt, faCloudMoon } from '@fortawesome/free-soli
 import { Link } from 'react-router-dom';
 
 const ForecastMini = () => {
-  const forecasts = [
-    { time: "5:00 PM", icon: faCloudShowersHeavy, temp: "27°C" },
-    { time: "6:00 PM", icon: faCloudShowersHeavy, temp: "25°C" },
-    { time: "7:00 PM", icon: faCloudShowersHeavy, temp: "26°C" },
-    { time: "8:00 PM", icon: faBolt, temp: "24°C" },
-    { time: "9:00 PM", icon: faCloudMoon, temp: "32°C" },
-    { time: "10:00 PM", icon: faCloudMoon, temp: "30°C" },
-  ];
+  const generateForecasts = () => {
+    const forecasts = [];
+    const now = new Date();
+    for (let i = 1; i <= 24; i++) {
+      const forecastTime = new Date(now);
+      forecastTime.setHours(now.getHours() + i);
+      const timeString = forecastTime.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+      const temp = `${Math.floor(Math.random() * 10) + 20}°C`; // Random temperature between 20°C and 29°C
+      const icon = i % 3 === 0 ? faBolt : (i % 2 === 0 ? faCloudShowersHeavy : faCloudMoon); // Alternate icons
+      forecasts.push({ time: timeString, icon, temp });
+    }
+    return forecasts;
+  };
+
+  const forecasts = generateForecasts();
 
   return (
     <div className="p-4 bg-white">
