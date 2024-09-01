@@ -52,7 +52,7 @@ const Notification = () => {
   };
 
   return (
-    <div className="p-2 sm:py-2 lg:py-6 m-4 border rounded-lg">
+    <div className="p-2 sm:py-2 lg:py-6 bg-white/30 backdrop-blur-md border border-white/20 rounded-lg md:m-4 sm:m-2">
       <div
         className="relative w-full overflow-hidden"
         onTouchStart={handleTouchStart}
@@ -66,7 +66,7 @@ const Notification = () => {
           {notifications.map((notification, index) => (
             <div
               key={index}
-              className="min-w-full flex items-center justify-center bg-white"
+              className="min-w-full flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faUmbrella} className="text-xl mr-2" />
               <div className="sm:text-xs md:text-md lg:text-lg font-semibold">{notification.message}</div>

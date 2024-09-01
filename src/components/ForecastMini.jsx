@@ -22,7 +22,7 @@ const ForecastMini = () => {
   const forecasts = generateForecasts();
 
   return (
-    <div className="p-4 bg-white">
+    <div className="p-4 bg-white/30 backdrop-blur-md border border-white/20 rounded-lg md:m-4 sm:m-2">
       {/* Days Section */}
       <div className="flex items-center mb-4">
         <button className="text-center font-bold p-2 mr-2 border underline rounded-lg sm:text-base md:text-xl lg:text-2xl">
