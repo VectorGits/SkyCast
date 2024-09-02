@@ -4,7 +4,7 @@ import ForecastMaxi from "../components/ForecastMaxi";
 
 const ForecastPage = () => {
     return (
-        <div>
+        <div className="bg-gradient-to-b from-teal-400 to-blue-600 dark:bg-gradient-to-b dark:from-indigo-900 dark:to-indigo-700 dark:text-lime-50">
             <div className="flex items-center mb-2 p-4">
                 <Link to="/home" className="flex items-center justify-center text-center font-bold px-2 py-1 mr-2 border underline rounded-lg sm:text-base md:text-xl lg:text-2xl">
 				<lord-icon
