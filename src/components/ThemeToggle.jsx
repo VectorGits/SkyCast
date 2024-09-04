@@ -1,5 +1,7 @@
 // ThemeToggle.js
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const ThemeToggle = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,12 +32,26 @@ const ThemeToggle = () => {
     };
 
     return (
-        <button
-            onClick={toggleTheme}
-            className={`p-2 rounded-md ${isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`}
-        >
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
+        <label className="relative inline-flex items-center cursor-pointer">
+            <input
+                type="checkbox"
+                checked={isDarkMode}
+                onChange={toggleTheme}
+                className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600">
+                <span
+                    className={`absolute left-[2px] top-[2px] bg-white w-5 h-5 rounded-full transition-transform duration-300 ease-in-out flex items-center justify-center ${
+                        isDarkMode ? 'translate-x-5' : ''
+                    }`}
+                >
+                    <FontAwesomeIcon
+                     icon={isDarkMode ? faSun : faMoon}
+                     className={isDarkMode ? 'text-teal-400' : 'text-indigo-700'}
+                    />
+                </span>
+            </div>
+        </label>
     );
 };
 
