@@ -41,7 +41,7 @@ const ForecastMaxi = () => {
             <div className="text-center font-bold p-2 mr-2 border underline rounded-lg sm:text-base md:text-xl lg:text-2xl inline">{day}</div>
             <div className="flex space-x-4 overflow-x-scroll no-scrollbar">
               {forecasts.map((forecast, index) => (
-                <div key={index} className="sm:min-w-[80px] md:min-w-[130px] lg:min-w-[170px] text-center border p-2 rounded-lg shadow-sm mt-4">
+                <div key={index} className="sm:min-w-[80px] md:min-w-[130px] lg:min-w-[170px] text-center border p-2 rounded-lg shadow-sm mt-4 bg-white/30 border-white/20">
                   <span className="block sm:text-xs md:text-base lg:text-lg">{forecast.time}</span>
                   <FontAwesomeIcon icon={forecast.icon} className="sm:text-2xl md:text-4xl lg:text-5xl my-2" />
                   <span className="block sm:text-base md:text-lg lg:text-2xl font-bold">{forecast.temp}</span>
