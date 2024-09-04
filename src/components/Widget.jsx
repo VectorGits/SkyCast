@@ -17,7 +17,7 @@ const Widget = () => {
       {widgets.map((widget, index) => (
         <div
           key={index}
-          className="items-center bg-white p-4 shadow-md bg-white/30 backdrop-blur-md border border-white/20 rounded-lg"
+          className="items-center bg-white px-3 py-2 shadow-md bg-white/30 backdrop-blur-md border border-white/20 rounded-lg"
         >
           <div className='flex items-center mb-1 '>
           	<FontAwesomeIcon icon={widget.icon} className="sm:text-xs md:text-base lg:text-xl mr-2" />
