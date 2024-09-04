@@ -4,11 +4,11 @@ import { faCloudShowersHeavy, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 
 const WeatherHeader = () => {
   return (
-    <div className="flex justify-between items-center p-4 bg-white shadow-md">
+    <div className="flex justify-between items-center p-4 bg-white/30 backdrop-blur-md border border-white/20 rounded-lg m-4 sm:m-2">
       {/* Temperature and Condition */}
       <div className="flex flex-col items-center">
         <span className="sm:text-3xl md:text-5xl lg:text-7xl font-bold">27°C</span>
-        <span className="text-sm text-gray-600">Partly Cloudy</span>
+        <span className="text-sm text-gray-600 dark:text-gray-300">Partly Cloudy</span>
       </div>
 
       {/* Location */}

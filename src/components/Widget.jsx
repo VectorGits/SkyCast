@@ -13,15 +13,15 @@ const Widget = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:m-4 sm:m-2">
       {widgets.map((widget, index) => (
         <div
           key={index}
-          className="items-center bg-white border rounded-lg p-4 shadow-md"
+          className="items-center bg-white px-3 py-2 shadow-md bg-white/30 backdrop-blur-md border border-white/20 rounded-lg"
         >
-          <div className='flex items-center mb-1'>
+          <div className='flex items-center mb-1 '>
           	<FontAwesomeIcon icon={widget.icon} className="sm:text-xs md:text-base lg:text-xl mr-2" />
-            <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600">{widget.label}</div>
+            <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600 dark:text-gray-300">{widget.label}</div>
           </div>
             <div className="sm:text-base md:text-xl lg:text-3xl font-bold">{widget.value}</div>
         </div>

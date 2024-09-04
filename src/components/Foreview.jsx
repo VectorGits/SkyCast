@@ -27,7 +27,7 @@ const Foreview = () => {
   const days = getNextFiveDays();
 
   return (
-    <div className="p-4 m-4 bg-white border rounded-lg shadow-md">
+    <div className="p-4 bg-white shadow-md bg-white/30 backdrop-blur-md border border-white/20 rounded-lg md:m-4 sm:m-2">
       <table className="w-full">
         <tbody>
           {days.map((day, index) => (
