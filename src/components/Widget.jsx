@@ -21,7 +21,7 @@ const Widget = () => {
         >
           <div className='flex items-center mb-1 '>
           	<FontAwesomeIcon icon={widget.icon} className="sm:text-xs md:text-base lg:text-xl mr-2" />
-            <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600">{widget.label}</div>
+            <div className="sm:text-xs md:text-base lg:text-xl font-semibold text-gray-600 dark:text-gray-300">{widget.label}</div>
           </div>
             <div className="sm:text-base md:text-xl lg:text-3xl font-bold">{widget.value}</div>
         </div>
