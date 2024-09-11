@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudShowersHeavy, faBolt, faCloudMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faCloudShowersHeavy, faBolt, faCloudMoon, faSun, faCloud } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const ForecastMini = () => {
@@ -26,7 +26,9 @@ const ForecastMini = () => {
   const getIcon = (weather, dt) => {
     const hour = new Date(dt * 1000).getHours();
     if (weather.main === 'Thunderstorm') return faBolt;
-    if (weather.main === 'Rain') return faCloudShowersHeavy;
+    if (weather.main === 'Rain' || weather.main === 'shower rain') return faCloudShowersHeavy;
+    if (weather.main === 'scattered clouds' || weather.main === 'Clouds') return faCloud;
+    if (weather.main === 'clear sky') return faSun;
     if (hour >= 7 && hour <= 18) return faSun;
     return faCloudMoon;
   };
