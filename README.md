@@ -1,5 +1,8 @@
 # SkyCast Weather App
 
+![App screen snap](https://github.com/user-attachments/assets/a2fb173d-6fb0-4115-bd92-5a18776c54a9)
+
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
