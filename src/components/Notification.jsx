@@ -3,6 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrella } from '@fortawesome/free-solid-svg-icons';
 
 const Notification = () => {
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const response = await fetch('https://skycast-backend-live.onrender.com/this-weather');
+        const data = await response.json();
+        setWeatherData(data.weather.current);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    fetchWeatherData();
+  }, []);
+
+
   const notifications = [
     { message: "Grab an Umbrella! Rain ending around 9:00 PM" },
     { message: "Prepare for thunderstorms later in the evening." },

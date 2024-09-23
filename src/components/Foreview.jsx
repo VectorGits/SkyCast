@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faCloudShowersHeavy, faBolt } from '@fortawesome/free-solid-svg-icons';
 
 const Foreview = () => {
-  const forecasts = [
-    { precipitation: "45%", tempHigh: "85°", tempLow: "77°", icons: [faCloudShowersHeavy] },
-    { precipitation: "45%", tempHigh: "84°", tempLow: "76°", icons: [faBolt] },
-    { precipitation: "45%", tempHigh: "84°", tempLow: "76°", icons: [faBolt, faCloudShowersHeavy] },
-    { precipitation: "45%", tempHigh: "83°", tempLow: "76°", icons: [faBolt, faCloudShowersHeavy] },
-    { precipitation: "45%", tempHigh: "84°", tempLow: "76°", icons: [faBolt, faCloudShowersHeavy] },
-    { precipitation: "45%", tempHigh: "84°", tempLow: "76°", icons: [faCloudShowersHeavy] },
-  ];
+  const [forecastData, setForecastData] = useState([]);
+
+  useEffect(() => {
+    const fetchForecastData = async () => {
+      try {
+        const response = await fetch('https://skycast-backend-live.onrender.com/this-weather');
+        const data = await response.json();
+        setForecastData(data.weather.daily.slice(0, 5)); // Assuming the API returns a daily forecast array
+      } catch (error) {
+        console.error('Error fetching forecast data:', error);
+      }
+    };
+
+    fetchForecastData();
+  }, []);
 
   const getNextFiveDays = () => {
     const days = [];
@@ -35,15 +42,26 @@ const Foreview = () => {
               <td className="py-2 sm:text-xs md:text-lg lg:text-2xl">{day}</td>
               <td className="py-2">
                 <FontAwesomeIcon icon={faTint} className="mr-1 sm:text-xs lg:text-2xl" />
-                <span className='sm:text-xs md:text-lg lg:text-2xl ml-2'>{forecasts[index]?.precipitation}</span>
+                <span className='sm:text-xs md:text-lg lg:text-2xl ml-2'>
+                  {forecastData[index] ? `${forecastData[index].pop * 100}%` : '--'}
+                </span>
               </td>
               <td className="py-2">
-                {forecasts[index]?.icons.map((icon, iconIndex) => (
-                  <FontAwesomeIcon key={iconIndex} icon={icon} className="mr-2 sm:text-xs md:text-lg lg:text-2xl" />
-                ))}
+                {forecastData[index] ? (
+                  forecastData[index].weather.map((weather, iconIndex) => {
+                    const icon = weather.main === 'Thunderstorm' ? faBolt : faCloudShowersHeavy;
+                    return <FontAwesomeIcon key={iconIndex} icon={icon} className="mr-2 sm:text-xs md:text-lg lg:text-2xl" />;
+                  })
+                ) : (
+                  '--'
+                )}
               </td>
-              <td className="py-2 text-right md:text-lg sm:text-xs">{forecasts[index]?.tempHigh}</td>
-              <td className="py-2 text-right md:text-lg sm:text-xs">{forecasts[index]?.tempLow}</td>
+              <td className="py-2 text-right md:text-lg sm:text-xs">
+                {forecastData[index] ? `${Math.round(forecastData[index].temp.max)}°` : '--'}
+              </td>
+              <td className="py-2 text-right md:text-lg sm:text-xs">
+                {forecastData[index] ? `${Math.round(forecastData[index].temp.min)}°` : '--'}
+              </td>
             </tr>
           ))}
         </tbody>
