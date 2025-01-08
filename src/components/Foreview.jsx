@@ -8,7 +8,7 @@ const Foreview = () => {
   useEffect(() => {
     const fetchForecastData = async () => {
       try {
-        const response = await fetch('https://skycast-backend-live.onrender.com/this-weather');
+        const response = await fetch('https://api.marvelly.com.ng/v1/weather/this-weather/this-weather');
         const data = await response.json();
         setForecastData(data.weather.daily.slice(0, 5)); // Assuming the API returns a daily forecast array
       } catch (error) {

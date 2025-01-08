@@ -8,7 +8,7 @@ const Widget = () => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        const response = await fetch('https://skycast-backend-live.onrender.com/this-weather');
+        const response = await fetch('https://api.marvelly.com.ng/v1/weather/this-weather/this-weather');
         const data = await response.json();
         setWeatherData(data.weather.current);
       } catch (error) {
